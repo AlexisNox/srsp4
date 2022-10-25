@@ -1,0 +1,19 @@
+{
+  "login": "Authorization",
+  "name": "Username",
+  "namepress": "Enter username",
+  "mail": "E-mail",
+  "mailpress": "Enter E-mail",
+  "password": "Password",
+  "passwordpress": "Enter password",
+  "enterbutton": "Log in",
+  "question1": "Are you not with us yet?",
+  "registerss": "Register",
+  "registeration": "Registration",
+  "namber": "Phone Number",
+  "namberpress": "Enter phone number",
+  "question2": "Do you have an account?",
+  "enterss": "Log in",
+  "registerbutton": "Registration",
+  "welcome": "Welcome"
+}
