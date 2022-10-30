@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:srs4/profile_page.dart';
 import 'package:srs4/translations/locale_keys.g.dart';
-// import 'package:like_button/like_button.dart';
 import 'package:srs4/new_page.dart';
+import 'package:srs4/map_page.dart';
+import 'package:srs4/qr_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -34,10 +36,10 @@ class _HomePageState extends State<HomePage> {
   int pageIndex = 0;
 
   final pages = [
-    const Page1(),
+    const MapPage(),
     const NewPage(),
-    const Page3(),
-    const Page4(),
+    const QrPage(),
+    const ProfilePage(),
   ];
 
   @override
@@ -74,11 +76,16 @@ class _HomePageState extends State<HomePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+
           IconButton(
             enableFeedback: false,
             onPressed: () {
               setState(() {
-                pageIndex = 0;
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MapPage(),
+                    ));
               });
             },
             icon: pageIndex == 0
@@ -93,19 +100,19 @@ class _HomePageState extends State<HomePage> {
               size: 35,
             ),
           ),
+
+
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NewPage(),
-                ),
-    );
               setState(() {
-                pageIndex = 1;
-              });
-            },
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NewPage(),
+                  ));
+            });
+              },
             icon: pageIndex == 1
                 ? const Icon(
               Icons.newspaper_rounded,
@@ -118,13 +125,20 @@ class _HomePageState extends State<HomePage> {
               size: 35,
             ),
           ),
+
+
           IconButton(
             enableFeedback: false,
-            onPressed: () {
+            onPressed: ()  {
               setState(() {
-                pageIndex = 2;
-              });
-            },
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => QrPage(),
+                  ));
+            });
+              },
+
             icon: pageIndex == 2
                 ? const Icon(
               Icons.widgets_rounded,
@@ -137,11 +151,17 @@ class _HomePageState extends State<HomePage> {
               size: 35,
             ),
           ),
+
+
           IconButton(
             enableFeedback: false,
             onPressed: () {
               setState(() {
-                pageIndex = 3;
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfilePage(),
+                    ));
               });
             },
             icon: pageIndex == 3
@@ -157,102 +177,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class Page1 extends StatelessWidget {
-  const Page1({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white70,
-      child: Center(
-        child: Text(
-          "Page Number 1",
-          style: TextStyle(
-            color: Colors.purple,
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class NewPage extends StatelessWidget {
-  const NewPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white70,
-      child: Center(
-        child: Center(
-          child: ListView(
-            children: <Widget>[
-              ListTile(
-                title: Text('g'),
-                leading: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 44,
-                    minWidth: 44,
-                    maxWidth: 64,
-                    maxHeight: 64,
-                  ),
-                  // child: LikeButton(
-                  //
-                  // ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class Page3 extends StatelessWidget {
-  const Page3({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white70,
-      child: Center(
-        child: Text(
-          "Page Number 3",
-          style: TextStyle(
-            color: Colors.purple,
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class Page4 extends StatelessWidget {
-  const Page4({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white70,
-      child: Center(
-        child: Text(
-          "Page Number 4",
-          style: TextStyle(
-            color: Colors.purple,
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
       ),
     );
   }
