@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "99572027296",
+    "project_id": "rosy-decker-368003",
+    "storage_bucket": "rosy-decker-368003.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99572027296:android:762515bbe72c156e1fdec5",
+        "android_client_info": {
+          "package_name": "com.example.srs4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "99572027296-8f49r8gpgl7u2jsavc4r70os4706lkmk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlx3crM4lslrR341xebGEMQU30ytTgdmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "99572027296-8f49r8gpgl7u2jsavc4r70os4706lkmk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
