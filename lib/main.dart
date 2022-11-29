@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:srs4/language_page.dart';
-import 'package:srs4/login_page.dart';
-import 'package:srs4/registra_page.dart';
-import 'package:srs4/bottom_bar.dart';
+import 'package:srs4/pages/language_page.dart';
+import 'package:srs4/login_registra/login_page.dart';
+import 'package:srs4/login_registra/registra_page.dart';
+import 'package:srs4/ofor/bottom_bar.dart';
 import 'package:srs4/translations/codegen_loader.g.dart';
 
 void main() async {

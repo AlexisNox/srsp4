@@ -1,23 +1,21 @@
-import 'dart:convert';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:srs4/header_widget.dart';
-import 'package:srs4/login_page.dart';
+import 'package:srs4/ofor/bottom_bar.dart';
+import 'package:srs4/ofor/header_widget.dart';
+import 'package:srs4/login_registra/registra_page.dart';
 import 'package:srs4/translations/locale_keys.g.dart';
 import 'package:srs4/user.dart';
-import 'package:http/http.dart' as http;
 
-class RegistraPage extends StatefulWidget {
-  const RegistraPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key, required User usersInfo}) : super(key: key);
 
   @override
-  _RegistraPageState createState() => _RegistraPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _RegistraPageState extends State<RegistraPage> {
-  double _headerHeight = 150;
+class _LoginPageState extends State<LoginPage> {
+  double _headerHeight = 170;
   bool _hidepassword = true;
 
   final _formKey = GlobalKey<FormState>();
@@ -25,19 +23,16 @@ class _RegistraPageState extends State<RegistraPage> {
 
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
-  final _phoneController = TextEditingController();
   final _passController = TextEditingController();
-
 
   final _usernameFocus = FocusNode();
   final _emailFocus = FocusNode();
-  final _phoneFocus = FocusNode();
   final _passFocus = FocusNode();
 
   User newUser = User();
 
-  void _fieldFocusChange(BuildContext context, FocusNode currentFocus,
-      FocusNode nextFocus) {
+  void _fieldFocusChange(
+      BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
     currentFocus.unfocus();
     FocusScope.of(context).requestFocus(nextFocus);
   }
@@ -61,13 +56,13 @@ class _RegistraPageState extends State<RegistraPage> {
                   // This will be the login form
                   child: Column(
                     children: [
-                      SizedBox(height: 30.0),
+                      SizedBox(height: 0.0),
                       Form(
                           key: _formKey,
                           child: Column(
                             children: [
                               Container(
-                                child: Text(LocaleKeys.registeration.tr(),
+                                child: Text(LocaleKeys.login.tr(),
                                   style: TextStyle(
                                       fontSize: 30,
                                       fontWeight: FontWeight.bold,
@@ -75,8 +70,6 @@ class _RegistraPageState extends State<RegistraPage> {
                                 ),
                               ),
                               const SizedBox(height: 15),
-
-                              const SizedBox(height: 7),
                               TextFormField(
                                 focusNode: _usernameFocus,
                                 autofocus: true,
@@ -117,27 +110,6 @@ class _RegistraPageState extends State<RegistraPage> {
                               ),
                               const SizedBox(height: 7),
                               TextFormField(
-                                focusNode: _phoneFocus,
-                                onFieldSubmitted: (_) {
-                                  _fieldFocusChange(
-                                      context, _phoneFocus, _passFocus);
-                                },
-                                controller: _phoneController,
-                                decoration: InputDecoration(
-                                  filled: true,
-                                  fillColor: Colors.white38,
-                                  labelText: LocaleKeys.namber.tr(),
-                                  hintText: LocaleKeys.namberpress.tr(),
-                                  prefixIcon: Icon(
-                                    Icons.mobile_screen_share,
-                                    color: Colors.black45,
-                                  ),
-                                ),
-                                keyboardType: TextInputType.phone,
-                                onSaved: (value) => newUser.phone = value!,
-                              ),
-                              const SizedBox(height: 7),
-                              TextFormField(
                                 focusNode: _passFocus,
                                 controller: _passController,
                                 obscureText: _hidepassword,
@@ -167,15 +139,11 @@ class _RegistraPageState extends State<RegistraPage> {
                               ),
                               const SizedBox(height: 10),
                               Container(
-
                                 child: ElevatedButton(
-
                                   child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        40, 10, 40, 10),
+                                    padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
                                     child: Text(
-                                      LocaleKeys.registerbutton.tr()
-                                          .toUpperCase(),
+                                        LocaleKeys.enterbutton.tr().toUpperCase(),
                                       style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -183,26 +151,26 @@ class _RegistraPageState extends State<RegistraPage> {
                                       ),
                                     ),
                                   ),
-                                  onPressed: _submitForm,
-                                  // onPressed: () {
-                                  //   if (_formKey.currentState!.validate()) {
-                                  //     Navigator.of(context).pushAndRemoveUntil(
-                                  //         MaterialPageRoute(
-                                  //             builder: (context) => LoginPage( usersInfo: newUser,)
-                                  //         ),
-                                  //             (Route<dynamic> route) => false
-                                  //     );
-                                  //   }
-                                  // },
+                                  onPressed: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      Navigator.of(context).pushAndRemoveUntil(
+                                          MaterialPageRoute(
+                                              builder: (context) => HomePage()
+                                          ),
+                                              (Route<dynamic> route) => false
+                                      );
+                                    }
+                                  },
                                 ),
                               ),
+
                               const SizedBox(height: 5),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
                                     child: Text(
-                                      LocaleKeys.question2.tr(),
+                                      LocaleKeys.question1.tr(),
                                       style: TextStyle(
                                           color: Colors.black54, fontSize: 13),
                                     ),
@@ -212,15 +180,12 @@ class _RegistraPageState extends State<RegistraPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              LoginPage(
-                                                usersInfo: newUser,
-                                              ),
+                                          builder: (context) => RegistraPage(),
                                         ),
                                       );
                                     },
                                     child: Text(
-                                      LocaleKeys.enterss.tr(),
+                                      LocaleKeys.registerss.tr(),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         color: Colors.purple,
@@ -242,30 +207,18 @@ class _RegistraPageState extends State<RegistraPage> {
   }
 
   void _submitForm() {
-    {
-      const url = 'https';
-      http.post(Uri.parse(
-          'https://rosy-decker-368003-default-rtdb.firebaseio.com/data.json'),
-          body: jsonEncode({
-            'name': _usernameController.text,
-            'phone': _phoneController.text,
-            'Email': _emailController.text,
-          })).then((response) {
-        print(json.decode(response.body));
-        String userName = json.decode(response.body)['name'];
-        _showDialog(name: '$userName');
-      });
-    }
-  }
-
-  String? validateFullName(String? value) {
-    final nameExp = RegExp(r'^[A-Za-z ]+$');
-    if (value == null) {
-      return 'Требуется полное имя.';
-    } else if (!nameExp.hasMatch(value)) {
-      return 'Пожалуйста, введите буквы алфавита.';
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
     } else {
-      return null;
+      _showMessage(
+          message:
+          'Неверно заполненные данные! Пожалуйста, попробуйте еще раз');
     }
   }
 
@@ -296,60 +249,6 @@ class _RegistraPageState extends State<RegistraPage> {
     } else {
       return null;
     }
-  }
-
-  void _showDialog({required String name}) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text(
-            'Готово',
-            style: TextStyle(color: Colors.blue, fontSize: 23),
-          ),
-          content: Text(
-            '$name в базе данных',
-            style: const TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 18.0,
-            ),
-          ),
-          actions: [
-            ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      const Color(0xFF9575CD)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18),
-                          side: const BorderSide(color: Color(0xFF9575CD))
-                      )
-                  )
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        LoginPage(
-                          usersInfo: newUser,
-                        ),
-                  ),
-                );
-              },
-              child: const Text(
-                'Продолжить',
-                style: TextStyle(
-                  color: Colors.purple,
-                  fontSize: 18.0,
-                ),
-              ),
-            ),
-          ],
-        );
-      },
-    );
   }
 
   void _showMessage({required String message}) {

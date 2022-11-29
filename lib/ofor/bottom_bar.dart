@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:srs4/profile_page.dart';
+import 'package:srs4/pages/profile_page.dart';
 import 'package:srs4/translations/locale_keys.g.dart';
-import 'package:srs4/new_page.dart';
-import 'package:srs4/map_page.dart';
-import 'package:srs4/qr_page.dart';
+import 'package:srs4/pages/new_page.dart';
+import 'package:srs4/pages/qr_page.dart';
+import '../pages/map_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -36,8 +36,8 @@ class _HomePageState extends State<HomePage> {
   int pageIndex = 0;
 
   final pages = [
-     MapPage(),
     const NewPage(),
+    MapPage(),
     const QrPage(),
     const ProfilePage(),
   ];
@@ -81,17 +81,17 @@ class _HomePageState extends State<HomePage> {
             enableFeedback: false,
             onPressed: () {
               setState(() {
-                pageIndex = 0;
+                pageIndex = 1;
               });
             },
-            icon: pageIndex == 0
+            icon: pageIndex == 1
                 ? const Icon(
-              Icons.home_filled,
+              Icons.map,
               color: Colors.white,
               size: 35,
             )
                 : const Icon(
-              Icons.home_outlined,
+              Icons.map_outlined,
               color: Colors.white,
               size: 35,
             ),
@@ -102,17 +102,17 @@ class _HomePageState extends State<HomePage> {
             enableFeedback: false,
             onPressed: () {
               setState(() {
-                pageIndex = 1;
+                pageIndex = 0;
             });
               },
-            icon: pageIndex == 1
+            icon: pageIndex == 0
                 ? const Icon(
-              Icons.newspaper_rounded,
+              Icons.home_filled,
               color: Colors.white,
               size: 35,
             )
                 : const Icon(
-              Icons.newspaper_outlined,
+              Icons.home_outlined,
               color: Colors.white,
               size: 35,
             ),
