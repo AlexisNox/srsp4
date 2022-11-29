@@ -27,7 +27,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:srs4/bottom_bar.dart';
+import 'package:srs4/ofor/bottom_bar.dart';
 
 class QrPage extends StatefulWidget {
   const QrPage({Key? key}) : super(key: key);
@@ -114,7 +114,7 @@ class _QrPageState extends State<QrPage> {
                                 _flashOn
                                     ? Icons.flash_on_outlined
                                     : Icons.flash_off_outlined,
-                                color: Colors.white,
+                                  color: Colors.white,
                               )),
                         ),
                       ),
