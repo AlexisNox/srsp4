@@ -60,7 +60,9 @@ dependencies:
   http: ^0.13.5
 
 
+
 dev_dependencies:
+  flutter_launcher_icons: ^0.11.0
   flutter_test:
     sdk: flutter
   retrofit_generator: ^4.0.3+1
@@ -85,10 +87,20 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+
+
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/icon/
     - assets/translations/
     - assets/lottie/
+    - jsonfile/
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

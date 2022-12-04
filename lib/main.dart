@@ -4,6 +4,7 @@ import 'package:srs4/pages/language_page.dart';
 import 'package:srs4/login_registra/login_page.dart';
 import 'package:srs4/login_registra/registra_page.dart';
 import 'package:srs4/ofor/bottom_bar.dart';
+import 'package:srs4/pages/map/map_page.dart';
 import 'package:srs4/translations/codegen_loader.g.dart';
 
 void main() async {
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: LanguagePage (),
+      home: HomePage(),
     );
   }
 }

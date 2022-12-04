@@ -11,7 +11,7 @@
     	<string>ru</string>
     </array>
 	<key>CFBundleDisplayName</key>
-	<string>Srs4</string>
+	<string>MyApp</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

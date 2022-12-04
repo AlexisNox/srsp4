@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:srs4/pages/profile_page.dart';
+import 'package:srs4/pages/profile/profile_page.dart';
 import 'package:srs4/translations/locale_keys.g.dart';
-import 'package:srs4/pages/new_page.dart';
+import 'package:srs4/pages/newspages/new_page.dart';
 import 'package:srs4/pages/qr_page.dart';
-import '../pages/map_page.dart';
+import '../pages/animationpage.dart';
+import '../pages/map/map_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -39,6 +40,7 @@ class _HomePageState extends State<HomePage> {
     const NewPage(),
     MapPage(),
     const QrPage(),
+    const AnimationPage(),
     const ProfilePage(),
   ];
 
@@ -149,6 +151,27 @@ class _HomePageState extends State<HomePage> {
               });
             },
             icon: pageIndex == 3
+                ? const Icon(
+              Icons.auto_fix_normal ,
+              color: Colors.white,
+              size: 35,
+            )
+                : const Icon(
+              Icons.auto_fix_normal_outlined,
+              color: Colors.white,
+              size: 35,
+            ),
+          ),
+
+
+          IconButton(
+            enableFeedback: false,
+            onPressed: () {
+              setState(() {
+                pageIndex = 4;
+              });
+            },
+            icon: pageIndex == 4
                 ? const Icon(
               Icons.person,
               color: Colors.white,
